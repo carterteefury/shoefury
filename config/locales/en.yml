@@ -1,0 +1,24 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  activerecord:
+    attributes:
+      spree/brand:
+        name: Name
+  new_brand: New Brand
+  brand: Brand
+  brands: Brands
+  brand_actions: Brand Actions
+  import_products: Import Products
+  product_import_processing: 'Thanks, your import has been added to the queue for processing. You will receive an email confirming the import once it has completed.'
+  product_imports: 'Import Products'
+  form:
+    product_import:
+      heading: 'Import Products from CSV'
+      new:
+        data_file: "Product Data File"
+  manage: "Brand Management"
+  update_tracking_number: "Update Tracking Number"
+  weight_rate: "Weight Rate"
+

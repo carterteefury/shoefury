@@ -1,0 +1,21 @@
+<div class="box box-form">
+  <%= link_to "Close", root_path, :class => "close-x" %>
+  <h2>Sign Up</h2>
+  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
+  <%= form_for :user, :url => spree.user_registration_path(@user) do |f| %>
+    <%= f.email_field :email, :placeholder => "Email" %>
+    <%= f.password_field :password, :placeholder => "Password" %>
+    <%= f.password_field :password_confirmation, :placeholder => "Enter password again" %>
+
+    <p class="right"><%= f.check_box :remember_me %> <label for="user_remember_me">Remember Me</label> <%= f.submit "Sign Up", :class => 'button button-primary space-left' %></p>
+    <p>Already a member? <%= link_to raw("Sign&nbsp;In"), spree.login_path %></p>
+  <% end %>
+</div>
+
+<div class="box" hidden>
+  <h2 class="reverse">About Karnl</h2>
+  <p class="reverse-soft">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat.</p>
+</div>

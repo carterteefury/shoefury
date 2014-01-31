@@ -1,0 +1,163 @@
+<% content_for :body_class, "class='brand-page'" %>
+
+<% content_for :head do %>
+  <meta property="og:title" content="Karnl Link" />
+  <meta property="og:description" content="<%= share_text(@product) %>" />
+  <meta property="og:image" content="<%= @product.images.first ? @product.images.first.attachment.url(:small) : "" %>" />
+<% end %>
+
+
+<% if @product.brand %>
+<%# Customizes the color scheme for the page per the brand settings %>
+<style type="text/css">
+  .brand-page header,
+  .brand-page #product-copy-container,
+  .brand-page #more-brand-products-nav,
+  #product-title,
+  #info  { background-color: <%= @product.brand.background_color %>; }
+
+  #info > p:first-child,
+  #product-copy h3,
+  .brand-page #more-brand-products-nav p,
+  #product-title h2, #product-title h3 { color: <%= @product.brand.primary_text_color %>; }
+
+  #info,
+  #info > p:first-child span,
+  #info, #info > p:first-child span { color: <%= @product.brand.secondary_text_color %>; }
+
+  a, a:visited { color: <%= @product.brand.link_color %>; }
+
+  <% if @product.brand.dark_color_scheme %>
+    .jcarousel-skin-tango .jcarousel-prev-horizontal { background-image: url(<%= asset_path 'store/arrow-left-white.png' %>) !important; } 
+    .jcarousel-skin-tango .jcarousel-next-horizontal { background-image: url(<%= asset_path 'store/arrow-right-white.png' %>) !important; } 
+    .jcarousel-skin-tango .jcarousel-prev-disabled { background-image: none !important; }
+    .jcarousel-skin-tango .jcarousel-next-disabled { background-image: none !important; }
+  <% else %>
+    #auth p a,
+    header #auth, header #auth a { color: <%= @product.brand.secondary_text_color %>; }
+    #auth p a:hover { color: #000; }
+    .jcarousel-skin-tango .jcarousel-prev-horizontal { background-image: url(<%= asset_path 'store/arrow-left-black.png' %>) !important; } 
+    .jcarousel-skin-tango .jcarousel-next-horizontal { background-image: url(<%= asset_path 'store/arrow-right-black.png' %>) !important; } 
+    .jcarousel-skin-tango .jcarousel-prev-disabled { background-image: none !important; }
+    .jcarousel-skin-tango .jcarousel-next-disabled { background-image: none !important; }
+  <% end %>
+
+  @media only screen and (min-width: 960px) {
+    .brand-page #product-details { background-color: <%= @product.brand.background_color %>; }
+  }
+</style>
+<% end %>
+
+<div id="brand-bg" class="full-container"<% if @product.brand && @product.brand.background? %> style="background: #000 url(<%= @product.brand.background.url(:original) %>) repeat;"<% end %>>
+  <header class="container group">
+    <div id="karnl-logo-subdued" class="hide"><%= link_to "Karnl", root_path %></div>
+    <div id="auth">
+      <% if user_signed_in? %>
+        <%= link_to "My Account", spree.account_path %>
+      <% else %>
+        <%= link_to "Sign In", spree.login_path %>
+      <% end %>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to_cart %><a href="<%= cart_path %>" class="cart-count-link"><span class="cart-count"><%= current_order ? current_order.item_count : "0" %></a></span>
+    </div>
+    <div id="home-link"><%= link_to "Home", root_path %></div>
+    <% if @product.brand %>
+      <div id="brand-logo">
+        <img />
+        <div id="love-link-box"><%= link_to "You Love", "javascript:void(0)", :class => "love-link" %><span><%= @product.hearts_count %></span></div>
+      </div>
+    <% end %>
+
+  </header>
+
+  <div id="product-details-container" class="container group">
+    <div id="product-details">
+      <div id="product-title" class="container group">
+        <h3><%= @product.brand ? @product.brand.name : raw("&nbsp;") %>
+          <span id="mobile-social-links" class="float-right">
+          <%= render :partial => "spree/shared/social_links", :locals => { :version => "share-menu", :share_text => share_text(@product) } %>
+          </span>
+        </h3>
+        <h2><%= @product.name %></h2>
+      </div>
+
+      <div id="photos" class="container group">
+        <ul class="jcarousel-skin-tango">
+          <% @product.images.each do |image| %>
+            <li><%= image_tag image.attachment.url(:large) %></li>
+          <% end%>
+        </ul>
+        <div class="item-bar-bg"></div>
+        <%= render 'love_link', product: @product %>
+      </div>
+
+      <div id="info" class="container group boxsizing">
+        <p id="price" class="center"><%= number_to_currency @product.price %></p>
+
+        <% if @product.brand.free_shipping %>
+          <div id="free-shipping">
+            <p>Free Shipping on this Product</p>
+          </div>
+        <% end %>
+
+        <%= render :partial => "cart_form" %>
+
+        <p class="tab-buttons center nobottommargin">
+          <%= link_to "Details", "javascript:void(0)", :id => "details-tab", :class => "button button-secondary" %> 
+          <%= link_to "About", "javascript:void(0)", :id => "about-tab", :class => "even button button-secondary" %>
+          <%= link_to "Returns", "javascript:void(0)", :id => "return-policy-tab", :class => "button button-secondary" %>
+          <%= link_to "Shipping", "javascript:void(0)", :id => "shipping-details-tab", :class => "even last button button-secondary" %>
+        </p>
+
+        <%= render :partial => "spree/shared/social_links", :locals => { :version => "share-list", :share_text => share_text(@product) } %>
+
+        <div id="product-copy-container">
+          <div id="product-copy">
+            <div id="details" class="copy-tab max-width-center">
+              <h3>Details</h3>
+              <%= product_description(@product) rescue t(:product_has_no_description) %>
+            </div>
+            <div id="about" class="copy-tab max-width-center hide">
+              <h3>About</h3>
+              <%= raw(@product.brand.about.gsub(/^(.*)$/, '<p>\1</p>')) rescue '' %>
+            </div>
+            <div id="return-policy" class="copy-tab max-width-center hide">
+              <h3>Return Policy</h3>
+              <%= raw(@product.brand.return_policy.gsub(/^(.*)$/, '<p>\1</p>')) rescue '' %>
+            </div>
+            <div id="shipping-details" class="copy-tab max-width-center hide">
+              <h3>Shipping Details</h3>
+              <%= raw(@product.brand.shipping_details.gsub(/^(.*)$/, '<p>\1</p>')) rescue '' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end product details -->
+  </div><!-- end product details container -->
+
+  <div id="more-brand-products-nav" class="container">
+    <p>More</p>
+  </div>
+
+  <div id="more-brand-products" class="container">
+    <ul class="jcarousel-skin-tango item">
+      <% @brand_products.each_with_index do |p, i| %>
+        <% next if p == @product or p.images.blank? %>
+        <li><%= render :partial => "photo", :locals => { :p => p, :i => i } %></li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+
+<div id="marketplace" class="full-container">
+  <div id="products" class="container group<%= params[:list] ? ' list' : ' grid' %>">
+    <div id="title" class="group">
+      <a href="<%= root_path %>"><h1 class="logo karnl">Karnl</h1></a><p class="float-left">Marketplace</p>
+      <%= render 'search' %>
+    </div>
+    <%= render :partial => "products", :locals =>  { :products => @products, :list => @list } %>
+  </div>
+  <%= render :partial => "product_loader", :locals =>  { :page => @page, :list => @list } %>
+</div>
+
+
+

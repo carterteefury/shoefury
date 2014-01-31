@@ -1,0 +1,14 @@
+<div class="box box-form">
+  <%= link_to "Close", root_path, :class => "close-x" %>
+  <h2>Member Sign In</h2>
+  <% if flash[:error] %>
+    <div class="flash errors"><%= flash[:error] %></div>
+  <% end %>
+  <%= form_for :user, :url => spree.user_session_path do |f| %>
+    <%= f.email_field :email, :class => 'title', :tabindex => 1, :placeholder => "Email" %>
+    <%= f.password_field :password, :class => 'title', :tabindex => 2, :placeholder => "Password" %>
+    <p class="first"><%= link_to "Forgot Password?", spree.new_user_password_path %></p>
+    <p class="right"><%= f.check_box :remember_me %> <label for="user_remember_me">Remember Me</label> <%= f.submit "Sign in", :class => 'button button-primary space-left' %></p>
+    <p>Not a Member? <%= link_to raw("Sign&nbsp;Up&nbsp;Here"), spree.signup_path, :class => "new-member" %></p>
+  <% end %>
+</div>

@@ -1,0 +1,12 @@
+<% if full %>
+  <header class="container group">
+    <div class="group">
+      <a href="<%= root_path %>"><h1 class="logo karnl">Karnl</h1></a>
+    </div>
+    <p class="right"><%= link_to "Keep Shopping", last_product_path %></p>
+  </header>
+<% else %>
+  <header class="container group">
+    <a href="<%= root_path %>"><h1 class="logo karnl">Karnl</h1></a>
+  </header>
+<% end %>

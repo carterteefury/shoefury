@@ -1,0 +1,9 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<h1><%= t(:import_products) %></h1>
+
+<%= form_for :import_products do |f| %>
+  <%= f.file_field "csv" %>
+
+  <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+<% end %>

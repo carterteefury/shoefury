@@ -1,0 +1,196 @@
+/* Media queries
+---------------------------------------- */
+/* Breakpoints for photo grid, keeps it centered and always shows as many photos as possible */
+/* Also a optimization for the iPhone portrait */
+@media only screen and (min-width: 320px) {
+	.container, .cart-form .container { width: 310px; }
+	.grid .item, .list .item .photo, .item .photo > img, .list .item .photo > img { width: 145px; height: 120px; }
+	.item .photo .item-bg { height: 97px; }
+	.item .item-desc p.name { max-height: 55px; }
+	.list .item-copy { margin-left: 165px; }
+	form .button-facebook:after { content: " with Facebook" }
+	#photos, #photos .jcarousel-skin-tango .jcarousel-container-horizontal, #photos .jcarousel-skin-tango .jcarousel-item { width: 310px; height: 310px; }
+	#photos .jcarousel-skin-tango .jcarousel-list { height: 310px; }
+	#photos .jcarousel-skin-tango .jcarousel-clip-horizontal { width: 310px; }
+	#photos .jcarousel-skin-tango .jcarousel-next-horizontal, #photos .jcarousel-skin-tango .jcarousel-prev-horizontal { top: 135px; }
+	.brand-page form label, .brand-page form input[type="number"] { position: relative; top: -1px; }
+	.brand-page #size-chart { position: relative; top: -7px; }
+	.brand-page #more-brand-products-nav p:after { content: " From This Artist"; }
+	.brand-page header #auth { margin-bottom: 0; }
+
+	#more-brand-products, #more-brand-products .item { width: 310px; height: 260px; }
+	#more-brand-products .jcarousel-skin-tango .jcarousel-container-horizontal { width: 310px; }
+	#more-brand-products .jcarousel-skin-tango .jcarousel-clip-horizontal { height: 260px; width: 310px; }
+	#more-brand-products .jcarousel-skin-tango .jcarousel-item { width: 145px; height: 120px; }
+
+	.cart .cart-item .image-container { width: 135px; position: absolute; top: 20px; left: 0; }
+	.cart .cart-item .left-column, .cart .cart-item .right-column { margin-left: 155px; }
+	.cart .totals .button-primary:before { content: "Proceed to "; }
+	
+	.cart-form .box-form .left-column { float: left; width: 100px; margin-right: 15px; }
+	.cart-form .box-form .right-column { float: right; width: 155px; }
+
+	.checkout form select { width: 260px; }
+	
+	#info .tab-buttons .button { width: 140px; }
+
+	.cart #order-items .image-container { float: left; }
+	.cart #order-items .right-column, .cart #order-items #order-totals { margin-left: 110px; }
+}
+
+/* Removes iPhone portrait optimization */
+@media only screen and (min-width: 390px) {
+	.container { width: 380px; }
+	.cart-form .container { width: 310; }
+	.thank-you .box { max-width: none; }
+	.grid .item, .list .item .photo, .item .photo > img, .list .item .photo > img { width: 180px; height: 150px; }
+	.item .photo .item-bg { height: 127px; }
+	.item .item-desc p.name { max-height: 80px; }
+	.list .item-copy { margin-left: 200px; }
+	#photos, #photos .jcarousel-skin-tango .jcarousel-container-horizontal, #photos .jcarousel-skin-tango .jcarousel-item { width: 380px; height: 380px; }
+	#photos .jcarousel-skin-tango .jcarousel-list { height: 380px; }
+	#photos .jcarousel-skin-tango .jcarousel-clip-horizontal { width: 380px; }
+	#photos .jcarousel-skin-tango .jcarousel-next-horizontal, #photos .jcarousel-skin-tango .jcarousel-prev-horizontal { top: 170px; }
+
+	#more-brand-products, #more-brand-products .item { width: 380px; height: 320px; }
+	#more-brand-products .jcarousel-skin-tango .jcarousel-container-horizontal { width: 380px; }
+	#more-brand-products .jcarousel-skin-tango .jcarousel-clip-horizontal { width: 380px; height: 320px; }
+	#more-brand-products .jcarousel-skin-tango .jcarousel-item { width: 180px; height: 150px; }
+
+	.cart .cart-item .image-container { width: 180px; }
+	.cart .cart-item .left-column, .cart .cart-item .right-column { margin-left: 200px; }
+
+	.checkout .progress ol li { float: left; margin-left: 15px; }
+	.checkout .progress ol li:first-child { margin-left: 0; }
+
+	#info .tab-buttons .button { width: 82px; }
+	#info .tab-buttons .button.even { margin-right: 6px; }
+	#info .tab-buttons .button.last { margin-right: 0; }
+}
+
+/* Breakpoint for tablet-like devices */
+@media only screen and (min-width: 580px) {
+	.container, 
+	#more-brand-products, #more-brand-products .item, 
+	#more-brand-products .jcarousel-skin-tango .jcarousel-container-horizontal, 
+	#more-brand-products .jcarousel-skin-tango .jcarousel-clip-horizontal { width: 570px; }
+
+	body { background: #181e1f; }
+	.logo.shoe { position: relative; top: 29px; background-image: url(<%= asset_path 'logo-lg.png' %>); width: 133px; height: 42px; }
+	.cart-form .logo.shoe { top: 0px; }
+	header.center .logo.shoe { position: static; }
+	#title .logo.shoe { top: 0px; }
+	#title p { position: relative; top: 10px; }
+	.signin header h1 { margin-top: 50px; margin-bottom: 50px; }
+	header #social-links { display: inline; }
+	header #search-view #search { float: right; margin: 0 5px 0 0; }
+	header #search-view #search-link, header #search-view #share-menu { display: none; }
+	#search-field { display: inline; line-height: 18px; width: 200px; }
+	.brand-page #marketplace #search-field { margin-top: 12px; }
+	#search-link { display: none; }
+	.list .item .item-desc p.description { display: block; }
+
+	.cart .cart-item h3 { font-size: 24px; }
+	.cart .cart-item .tax-shipping { display: block; }
+	.cart .cart-item .left-column { margin-right: 160px; }
+	.cart .cart-item .right-column { position: absolute; top: 20px; right: 0; margin: 0; width: 150px; }
+
+	.cart.checkout form .select-group select { width: 250px; }
+	.cart.checkout form .select-group div span { float: none; }
+}
+
+@media only screen and (min-width: 770px) { 
+	.container, 
+	#more-brand-products, #more-brand-products .item, 
+	#more-brand-products .jcarousel-skin-tango .jcarousel-container-horizontal, 
+	#more-brand-products .jcarousel-skin-tango .jcarousel-clip-horizontal { width: 760px; }
+
+	.cart.checkout .cart-item .cart-item-details { margin: 0; padding: 0; width: auto; height: auto; background: red; }
+	.cart.checkout .cart-item .cart-item-details li { text-indent: 0; float: left; margin: 3px 0 10px 10px; padding: 0 0 0 10px; border-left: 1px solid #9E9E9E; width: auto;  }
+	.cart.checkout .cart-item .cart-item-details li:first-child { margin: 3px 0 0 0; border: 0; padding: 0; }
+
+	.thank-you .cart-items { margin-right: 250px; }
+	.thank-you .cart-item { float: left; width: 50%; border: none; }
+	.thank-you .cart-item p.price { text-align: left; }
+	.thank-you .totals { width: 250px; position: absolute; top: 20px; right: 0; }
+	.thank-you .shipping-and-billing .column { float: left; width: 50%; }
+}
+
+/* Breakpoint for iPad landscape, desktop and larger */
+@media only screen and (min-width: 960px) {
+	.container, 
+	#more-brand-products, #more-brand-products .item, 
+	#more-brand-products .jcarousel-skin-tango .jcarousel-container-horizontal, 
+	#more-brand-products .jcarousel-skin-tango .jcarousel-clip-horizontal { width: 950px; }
+
+	.list .brand-products { display: block; }
+
+	.brand-page header #brand-logo { float: none; width: 200px; height: 70px; margin: 10px auto; }
+	.brand-page header #brand-logo img { position: static; max-width: 200px; max-height: 70px; }
+	.brand-page header #auth { margin: 20px 20px 0 0; }
+	.brand-page header #home-link { top: 40px; right: 20px; }
+	.brand-page header #karnl-logo-subdued { text-indent: -9999px; display: block; width: 200px; height: 70px; position: absolute; left: 20px; top: 10px; background: transparent url(<%= asset_path 'logo-sm.png' %>) no-repeat left center; }
+	.brand-page header #karnl-logo-subdued a { display: block; width: 200px; height: 70px; }
+
+	.brand-page #social-links { display: block; float: none; text-align: center; }
+	.brand-page #mobile-social-links { display: none; }
+
+	.brand-page #free-shipping { display: block; }
+	.brand-page #size-chart { top: 0px; margin-left: 10px; }
+
+	#product-details-container { position: relative; }
+	#product-details { min-height: 420px; width: 300px; padding-left: 410px; padding-right: 10px; border-radius: 5px; background-color: #1A1A1A; margin-bottom: 7px; }
+	#product-title, #info { background-color: transparent; width: auto; }
+	#photos { position: absolute; top: 20px; left: 20px; margin: 0px; }
+	#product-title h3 { margin-top: 20px; }
+	#product-title h2 { margin-bottom: 0px; }
+
+	#info { padding-top: 0px; padding-bottom: 20px; }
+	#info #price { text-align: left; }
+	#info #about-tab { display: inline-block; }
+	#info .tab-buttons .button { width: 135px; }
+	#info .tab-buttons .button.even { margin-right: 0; }
+	
+	#product-copy-container { position: absolute; top: 0; right: 0; padding: 20px; width: 183px; height: 380px; border-radius: 5px; background-color: #1A1A1A; }
+	#product-copy { overflow: auto; height: 380px; }
+	#product-copy h3 { display: block; margin-bottom: 10px; font-family: "gothambook"; color: #FFF; }
+
+	.checkout form input[type="text"], .checkout #payment-methods input[type="text"] { width: 50%; }
+
+}
+
+@media only screen and (min-width: 1150px) { 
+	.container, 
+	#more-brand-products, #more-brand-products .item, 
+	#more-brand-products .jcarousel-skin-tango .jcarousel-container-horizontal, 
+	#more-brand-products .jcarousel-skin-tango .jcarousel-clip-horizontal { width: 1140px; }
+
+	#product-copy-container { width: 373px; }
+
+}
+
+/* For that full screen monster grid because its just too cool to not keep doing */
+@media only screen and (min-width: 1340px) { 
+	.home-page .container.grid { width: 1330px; }
+}
+@media only screen and (min-width: 1530px) { 
+	.home-page .container.grid { width: 1520px; }
+}
+@media only screen and (min-width: 1720px) { 
+	.home-page .container.grid { width: 1710; }
+}
+@media only screen and (min-width: 1910px) { 
+	.home-page .container.grid { width: 1900px; }
+}
+@media only screen and (min-width: 2100px) { 
+	.home-page .container.grid { width: 2090px; }
+}
+@media only screen and (min-width: 2290px) { 
+	.home-page .container.grid { width: 2280px; }
+}
+@media only screen and (min-width: 2480px) { 
+	.home-page .container.grid { width: 2470px; }
+}
+@media only screen and (min-width: 2670px) { 
+	.home-page .container.grid { width: 2660px; }
+}

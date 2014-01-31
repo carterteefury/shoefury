@@ -1,0 +1,29 @@
+<div class="cart-item line-item group">
+  <div class="image-container">
+    <% if variant.images.length == 0 %>
+      <%= link_to image_tag(variant.product.images.first.attachment.url(:product)), variant.product %>
+    <% else %>
+      <%= link_to image_tag(variant.images.first.attachment.url(:product)), variant.product %>
+    <% end %>
+  </div>
+  <div class="left-column">
+    <h4><%= variant.product.brand ? variant.product.brand.name : "" %></h4>
+    <h3><%= variant.product.name %></h3>
+    <ul class="cart-item-details">
+      <li>Quantity: <%= item_form.number_field :quantity, :min => 0, :class => "line_item_quantity" %></li>
+      <li><%= number_to_currency line_item.price %></li>
+      <li><%= variant.options_text %></li>
+      <% if @order.insufficient_stock_lines.include? line_item %>
+        <li class="out-of-stock"><%= variant.in_stock? ? t(:insufficient_stock, :on_hand => variant.on_hand) : t(:out_of_stock) %></li>
+      <% end %>
+      <% if variant.product.brand %>
+        <li class="return-policy">Return Policy: <span><%= variant.product.brand.return_days %> days</span></li>
+      <% end %>
+      <li><%= truncate(variant.product.description, :length => 100, :omission => "...") %></li>
+    </ul>
+  </div>
+  <div class="right-column">
+    <p class="price right">Subtotal: <%= number_to_currency(line_item.price * line_item.quantity) unless line_item.quantity.nil? %></p>
+    <div class="actions right" data-hook="cart_item_delete"><%= link_to "Remove", 'javascript:void(0)', :class => 'delete', :id => "delete_#{dom_id(line_item)}" %></div>
+  </div>
+</div>

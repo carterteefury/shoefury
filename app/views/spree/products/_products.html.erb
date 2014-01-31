@@ -1,0 +1,16 @@
+<% products.each_with_index do |p, i| %>
+  <% unless p.nil? or p.images.blank? %>
+    <div class="item group <%= params[:list] ? 'list-item' : 'grid-item' %>">
+      <%= render :partial => "photo", :locals => { :p => p, :i => i } %>
+      <%= render :partial => "brand_products", :locals => { :products => Spree::Product.with_images.where(:brand_id => p.brand_id).limit(25), :p => p, :i => i } %>
+      <div class="item-copy">
+        <div class="item-desc">
+          <% if p.brand %><p class="brand"><%= p.brand.name %></p><% end %>
+          <p class="name"><%= p.name %></p>
+          <p class="price"><%= number_to_currency p.price %></p>
+          <p class="description"><%= truncate(p.description, :length => 550, :separator => ' ') %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

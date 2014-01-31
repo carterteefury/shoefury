@@ -1,0 +1,36 @@
+<% case version %>
+<% when "list" %>
+  <div id="social-links">
+    <%= link_to "Twitter", "https://twitter.com/getkarnl", :class => "social-icon twitter" %>
+    <%= link_to "Facebook", "https://www.facebook.com/pages/Karnl/220203381424782", :class => "social-icon facebook" %>
+    <%= link_to "Google+", "https://plus.google.com/u/0/100815050487515351766", :class => "social-icon google-plus" %>
+    <%= link_to "Pinterest", "https://pinterest.com/karnl/", :class => "social-icon pinterest" %>
+  </div>
+<% when "menu" %>
+  <div class="dropdown" id="share-menu">
+    <%= link_to "Follow+", "#share-menu", :id => "share-menu-link", "data-toggle" => "dropdown", :class => "dropdown-toggle" %> 
+    <ul class="dropdown-menu pull-right">
+      <li><%= link_to "Follow on Twitter", "https://twitter.com/getkarnl", :class => "social-icon twitter" %></li>
+      <li><%= link_to "Follow on Facebook", "https://www.facebook.com/pages/Karnl/220203381424782", :class => "social-icon facebook" %></li>
+      <li><%= link_to "Follow on Google+", "https://plus.google.com/u/0/100815050487515351766", :class => "social-icon google-plus" %></li>
+      <li><%= link_to "Follow on Pinterest", "https://pinterest.com/karnl/", :class => "social-icon pinterest" %></li>
+    </ul>
+  </div>
+<% when "share-list" %>
+  <div id="social-links">
+    <%= link_to "Twitter", "https://twitter.com/share?text=" + share_text, :class => "social-icon twitter" %>
+    <%= link_to "Facebook", "https://www.facebook.com/sharer.php?u=" + request.url, :class => "social-icon facebook" %>
+    <%= link_to "Google+", "https://plusone.google.com/_/+1/confirm?hl=en&url=" + request.url, :class => "social-icon google-plus" %>
+    <%= link_to "Pinterest", "javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());", :class => "social-icon pinterest" %>
+  </div>
+<% when "share-menu" %>
+  <div class="dropdown" id="share-menu">
+    <%= link_to "Share+", "#share-menu", :id => "share-menu-link", "data-toggle" => "dropdown", :class => "dropdown-toggle" %> 
+    <ul class="dropdown-menu pull-right">
+      <li><%= link_to "Share on Twitter", "https://twitter.com/share?text=" + share_text, :class => "social-icon twitter" %></li>
+      <li><%= link_to "Share on Facebook", "https://www.facebook.com/sharer.php?u=" + request.url, :class => "social-icon facebook" %></li>
+      <li><%= link_to "Share on Google+", "https://plusone.google.com/_/+1/confirm?hl=en&url=" + request.url, :class => "social-icon google-plus" %></li>
+      <li><%= link_to "Share on Pinterest", "javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());", :class => "social-icon pinterest" %></li>
+    </ul>
+  </div>
+<% end %>

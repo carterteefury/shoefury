@@ -1,0 +1,13 @@
+<% p_arr = random_array(products) %>
+<% if p_arr.size > 1 %>
+<div class="brand-products">
+  <ul class="jcarousel-skin-tango">
+    <% p_arr.each do |i| %>
+      <% if p.id != products[i].id %>
+        <li><%= render :partial => "photo", :locals => { :p => products[i] } %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <p>More From This Brand</p>
+</div>
+<% end %>

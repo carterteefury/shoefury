@@ -1,0 +1,7 @@
+<% content_for :body_class, "class='cart-form'" %>
+
+<%= render :partial => "spree/shared/cart_header", :locals =>  { :full => false } %>
+
+<div class="container">
+  <%= render :partial => "form" %>
+</div>

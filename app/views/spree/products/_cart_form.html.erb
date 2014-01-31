@@ -1,0 +1,33 @@
+<%= form_for :order, :url => populate_orders_url, :html => { :class => "max-width-center" } do |f| %>
+
+  <% if @product.has_variants? %>
+    <label>Options</label>
+    <select id="products_<%= @product.id %>" name="products[<%= @product.id %>]">
+      <% has_checked = false
+      @product.variants.active.each_with_index do |v,index|
+        next if v.option_values.empty? || (!v.in_stock && !Spree::Config[:show_zero_stock_products])
+        checked = !has_checked && (v.in_stock || Spree::Config[:allow_backorders])
+        has_checked = true if checked %>
+        <option value="<%= v.id %>" ><%= variant_options v %> <% if variant_price_diff v %><%= variant_price_diff v %><% end %></option>
+      <% end%>
+    </select>
+  <% end %>
+
+  <% if @product.price %>
+    <% if @product.has_stock? || Spree::Config[:allow_backorders] %>      
+      Qty&nbsp;<%= number_field_tag (@product.has_variants? ? :quantity : "variants[#{@product.master.id}]"),
+        1, :class => 'number', :in => 1..@product.on_hand %>
+      <% if @product.brand && @product.brand.sizing_chart? %>
+        <%= link_to raw("Size&nbsp;Chart"), @product.brand.sizing_chart.url, :id => "size-chart" %>
+      <% end %>
+
+      <%= button_tag :class => 'button button-primary', :type => :submit do %>
+        <%= t(:add_to_cart) %>
+      <% end %>
+    <% else %>
+      <%= content_tag('strong', t(:out_of_stock)) %>
+    <% end %>
+
+  <% end %>    
+
+<% end %>

@@ -1,0 +1,9 @@
+<h1><%= t(:edit_brand) %></h1>
+
+<%= form_for [:admin, @brand], :html=>{multipart:true} do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <p class="form-buttons" >
+    <%= button t(:update) %>
+    <%= t(:or) %> <%= link_to t(:cancel), admin_brands_url, :id => 'cancel_link' %>
+  </p>
+<% end %>

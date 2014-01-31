@@ -1,0 +1,13 @@
+<div class="photo" url="<%=spree.product_url(p,keywords: params[:keywords],utf8: params[:utf8])%>">
+  <%= image_tag p.images.first.attachment.url(:product) %>
+  <div class="item-bar-bg"></div>
+  <%= render 'love_link', product: p %>
+  <div class="hover" url="<%=spree.product_url(p) %>">
+    <div class="item-bg"></div>
+    <div class="item-desc">
+      <% if p.brand %><p class="brand"><%= p.brand.name %></p><% end %>
+      <p class="name"><%= p.name%></p>
+      <p class="price"><%= number_to_currency p.price %></p>
+    </div>
+  </div>
+</div>

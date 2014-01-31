@@ -1,0 +1,13 @@
+$('#products').append("<%= j render :partial => 'products', :locals =>  { :products => @products, :list => @list } %>")
+$('#product_loader').replaceWith("<%= j render :partial => 'product_loader', :locals => { :page => @page, :list => @list } %>")
+$('.brand-products > ul').jcarousel({ scroll: 2, rows: 1, moduleWidth: 394 });
+$('#products').find('.brand-products').each(function(){
+    EnableTouchWipe(this);
+});
+<% if @products.size > 0 %>
+  if ($(document).height() - $(window).height() < 200) {
+    $(window).scroll();
+  }
+<% else %>
+  $('#product_loader .spinner').hide();
+<% end %>

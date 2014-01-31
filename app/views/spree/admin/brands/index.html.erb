@@ -1,0 +1,30 @@
+<div class='toolbar'>
+  <ul class='actions'>
+    <li>
+      <%= button_link_to t(:new_brand), spree.new_admin_brand_path, :icon => 'add' %>
+    </li>
+  </ul>
+  <br class="clear" />
+</div>
+
+<h1><%= t(:brands) %></h1>
+
+<table class="index">
+  <thead>
+    <tr>
+      <th><%= t(:name) %></th>
+      <th style="width:150px;"><%= t(:action) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @brands.each do |brand| %>
+      <tr id="<%= spree_dom_id brand %>">
+        <td><%= brand.name %></td>
+        <td>
+          <%= link_to_edit brand %> &nbsp;
+          <%= link_to_delete brand %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

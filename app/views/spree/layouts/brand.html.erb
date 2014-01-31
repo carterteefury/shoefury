@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <%= render :partial => 'spree/manage/shared/head' %>
+</head>
+<body class='admin'>
+<!--[if IE 7]>
+<div id='IE7'>
+<![endif]-->
+<div id='wrapper' data-hook>
+
+  <div id="header" data-hook>
+
+    <div id="auth" style="float:right; margin-right:40px;margin-top:20px;">
+      <% if current_user %>
+        <%= link_to t(:logout), spree.destroy_user_session_path %>
+      <% end %>
+    </div>
+
+    <%= link_to image_tag(current_user.brand.logo(:mini), :id => 'logo'), spree.manage_path %>
+    <h1><%= link_to "#{current_user.brand.name} #{t(:manage)}", spree.manage_path %></h1>
+    <div id="progress"><%= image_tag 'admin/progress.gif' %> <%= t(:loading) %>...</div>
+  </div>
+
+  <div id="admin-menu" data-hook>
+    <ul data-hook="manage_tabs">
+      <%= render :partial => 'spree/manage/shared/tabs' %>
+    </ul>
+    <br class="clear" />
+  </div>
+
+  <div id="sub-menu" data-hook>
+    <%= yield :sub_menu %>
+    <br class="clear" />
+  </div>
+
+  <div class="<%= 'with-sidebar ' if content_for?(:sidebar) %> clear tile_bg" id="content" data-hook>
+
+    <% if flash[:error] %>
+      <div class="flash error"><%= flash[:error] %></div>
+    <% end %>
+    <% if notice %>
+      <div class="flash notice"><%= notice %></div>
+    <% end %>
+
+    <%= render :partial => 'spree/admin/shared/alert', :collection => session[:alerts] %>
+
+    <%= yield %>
+
+    <% if content_for?(:sidebar) %>
+      <br class="clear" />
+      <div id="sidebar" data-hook>
+        <%= yield :sidebar %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div id="footer" data-hook>
+    <p><%= t(:icons_by) %> <%= link_to 'pInvoke', 'http://pinvoke.com' %></p>
+  </div>
+
+
+</div>
+<!--[if IE]>
+</div>
+<![endif]-->
+
+<div data-hook="admin_footer_scripts"></div>
+</body>
+</html>
+

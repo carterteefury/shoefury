@@ -1,0 +1,26 @@
+<% content_for :body_class, "class='home-page'" %>
+
+<header class="container group<%= params[:list] ? ' list' : ' grid' %>">
+	<div class="group">
+		<a href="<%= root_path %>"><h1 class="logo karnl">Karnl</h1></a>
+		<% if user_signed_in? %>
+			<div id="auth" class="float-right"><%= link_to "My Account", spree.account_path %>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to_cart %><a href="<%= cart_path %>" class="cart-count-link"><span class="cart-count"><%= current_order ? current_order.item_count : "0" %></span></a></div>
+		<% else %>
+			<div id="auth" class="float-right"><%= link_to "Sign In", spree.login_path %>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to_cart %><a href="<%= cart_path %>" class="cart-count-link"><span class="cart-count"><%= current_order ? current_order.item_count : "0" %></span></a></div>
+		<% end %>
+		<%= render :partial => "spree/shared/social_links", :locals => { :version => "list" } %>
+	</div>
+	<div id="search-view" class="group">
+		<div id="view">
+			<%= render :partial => "spree/shared/social_links", :locals => { :version => "menu" } %>
+			<%= link_to "Grid View", root_path, :id => "grid-view-link", :class => 'icon-link' %>
+			<%= link_to "List View", root_path + '?list=1', :id => "list-view-link", :class => 'icon-link' %> 
+		</div>
+		<%= render 'search' %>
+	</div>
+</header>
+
+<div id="products" class="container group<%= params[:list] ? ' list' : ' grid' %>">
+	<%= render :partial => "products", :locals =>  { :products => @products, :list => @list } %>
+</div>
+<%= render :partial => "product_loader", :locals =>  { :page => @page, :list => @list } %>

@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  username: tima
+  password: tima
+  database: karnl_development
+  host: localhost
+
+test:
+  adapter: postgresql
+  username: tima
+  password: tima
+  database: karnl_test
+  host: localhost
+
+production:
+  adapter: postgresql
+  username: tima
+  password: tima
+  database: karnl_production

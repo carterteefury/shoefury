@@ -1,0 +1,4 @@
+<%= f.field_container :brand do %>
+  <%= f.label :brand_id, t(:brand) %> 
+  <%= f.collection_select :brand_id, Spree::Brand.all, :id, :name, :include_blank => "None" %>
+<% end %>

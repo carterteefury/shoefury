@@ -1,0 +1,90 @@
+<div class="clearfix">
+  <%= f.field_container :name do %>
+    <%= f.label :name, t(:name) %> <span class="required">*</span><br />
+    <%= f.text_field :name, :class=>'fullwidth title' %>
+    <%= f.error_message_on :name %>
+  <% end %>
+  <div class="left">
+
+    <%= f.field_container :logo do %>
+      <%= f.label :logo, t(:logo) %> <span class="required">*</span><br />
+      <%= image_tag(@brand.logo.url(:mini)) if @brand.logo.present? %><br />
+      <%= f.file_field :logo%>
+      <%= f.error_message_on :logo %>
+    <% end %>
+
+    <%= f.field_container :background do %>
+      <%= f.label :background, t(:background) %> <span class="required">*</span><br />
+      <%= image_tag(@brand.background.url(:mini)) if @brand.background.present?  %><br />
+      <%= f.file_field :background%>
+      <%= f.error_message_on :background %>
+    <% end %>
+
+    <%= f.field_container :sizing_chart do %>
+      <%= f.label :sizing_chart, t(:sizing_chart) %> <span class="required">*</span><br />
+      <%= image_tag(@brand.sizing_chart.url(:mini)) if @brand.sizing_chart.present?  %><br />
+      <%= f.file_field :sizing_chart%>
+      <%= f.error_message_on :sizing_chart %>
+    <% end %>
+
+    <%= f.field_container :background_color do %>
+      <%= f.label :background_color, t(:background_color) %> <br />
+      <%= f.text_field :background_color %>
+      <%= f.error_message_on :background_color %>
+    <% end %>
+
+    <%= f.field_container :primary_text_color do %>
+      <%= f.label :primary_text_color, t(:primary_text_color) %> <br />
+      <%= f.text_field :primary_text_color %>
+      <%= f.error_message_on :primary_text_color %>
+    <% end %>
+
+    <%= f.field_container :secondary_text_color do %>
+      <%= f.label :secondary_text_color, t(:secondary_text_color) %> <br />
+      <%= f.text_field :secondary_text_color %>
+      <%= f.error_message_on :secondary_text_color %>
+    <% end %>
+
+    <%= f.field_container :link_color do %>
+      <%= f.label :link_color, t(:link_color) %> <br />
+      <%= f.text_field :link_color %>
+      <%= f.error_message_on :link_color %>
+    <% end %>
+
+    <%= f.field_container :dark_color_scheme do %>
+      <%= f.label :dark_color_scheme, "Color Scheme" %> <br />
+      <%= f.radio_button :dark_color_scheme, true %> Dark
+      <%= f.radio_button :dark_color_scheme, false %> Light
+      <%= f.error_message_on :dark_color_scheme %>
+    <% end %>
+
+
+  </div>
+  <div class="right">
+    <%= f.field_container :about do %>
+      <%= f.label :about, t(:about) %> <br />
+      <%= f.text_area :about %>
+      <%= f.error_message_on :about %>
+    <% end %>
+    <%= f.field_container :shipping_details do %>
+      <%= f.label :shipping_details, t(:shipping_details) %> <br />
+      <%= f.text_area :shipping_details %>
+      <%= f.error_message_on :shipping_details %>
+    <% end %>
+    <%= f.field_container :return_policy do %>
+      <%= f.label :return_policy, t(:return_policy) %> <br />
+      <%= f.text_area :return_policy %>
+      <%= f.error_message_on :return_policy %>
+    <% end %>
+    <%= f.field_container :return_days do %>
+      <%= f.label :return_days, t(:return_days) %> <br />
+      <%= f.number_field :return_days %>
+      <%= f.error_message_on :return_days %>
+    <% end %>
+    <%= f.field_container :free_shipping do %>
+      <%= f.check_box :free_shipping %>
+      <%= f.label :free_shipping, t(:free_shipping) %> <br />
+      <%= f.error_message_on :free_shipping %>
+    <% end %>
+  </div>
+</div>

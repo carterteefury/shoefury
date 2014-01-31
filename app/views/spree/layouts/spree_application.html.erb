@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- Conditional comment for mobile ie7 blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7" lang="en"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head data-hook="inside_head">
+  <meta charset="utf-8" />
+
+  <title><%= title %></title>
+
+  <%== meta_data_tags %>
+
+	<!-- Mobile viewport optimization h5bp.com/ad -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width">
+
+	<!-- Home screen icon  Mathias Bynens mathiasbynens.be/notes/touch-icons -->
+	<!-- For iPhone 4 with high-resolution Retina display: -->
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= asset_path 'touch/apple-touch-icon-114x114-precomposed.png' %>">
+	<!-- For first-generation iPad: -->
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= asset_path 'touch/apple-touch-icon-72x72-precomposed.png' %>">
+	<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+	<link rel="apple-touch-icon-precomposed" href="<%= asset_path 'touch/apple-touch-icon-57x57-precomposed.png' %>">
+	<!-- For nokia devices: -->
+	<link rel="shortcut icon" href="<%= asset_path 'touch/apple-touch-icon.png' %>">
+
+	<!-- iOS web app, delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<script>(function(){var a;if(navigator.platform==="iPad"){a=window.orientation!==90||window.orientation===-90?"<%= asset_path 'touch/startup-tablet-landscape.png' %>":"<%= asset_path 'touch/startup-tablet-portrait.png' %>"}else{a=window.devicePixelRatio===2?"<%= asset_path 'touch/startup-retina.png' %>":"<%= asset_path 'touch/startup.png' %>"}document.write('<link rel="apple-touch-startup-image" href="'+a+'"/>')})()</script>
+
+	<!-- The script prevents links from opening in mobile safari. https://gist.github.com/1042026 -->
+	<script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+
+	<!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+	<meta http-equiv="cleartype" content="on">
+
+
+	<%= stylesheet_link_tag "store/application", :media => "all" %>
+	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="<%= asset_path 'ie7.css' %>"><![endif]-->
+
+	<%= javascript_include_tag "modernizr" %>
+	<%= javascript_include_tag "respond" %>
+
+	<%= csrf_meta_tags %>
+
+  <%= render :partial => 'spree/shared/google_analytics' %> 
+
+  <%= yield :head %>
+
+</head>
+
+<body<%= content_for?(:body_class) ? yield(:body_class) : "" %><%= content_for?(:body_style) ? yield(:body_style) : "" %>>
+
+	<%= yield %>
+
+        <% if user_signed_in? # allow signed in users to heart products %>
+          <div style="display:none;">
+            <%= form_for(Spree::Heart.new) do |f| %>
+              <%= f.hidden_field :product_id %>
+            <% end %>
+          </div>
+        <% end %>
+	<!-- Most JavaScript at the bottom for fast page loading -->
+	<%= javascript_include_tag "store/application" %>
+
+  <% if controller.controller_name == "products" && controller.action_name == "show" && @product.brand %>
+    <script>
+      $(document).ready(function(){
+        $(".brand-page header #brand-logo img").attr('src', "<%= @product.brand.logo.url(:normal) %>");
+      });
+    </script>
+  <% end %>
+
+</body>
+</html>

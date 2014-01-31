@@ -1,0 +1,6 @@
+<% content_for :sub_menu do %>
+  <ul id="sub_nav" >
+    <%= mtab :orders, label: "Pending", :match_path=>"/orders" %>
+    <%= mtab :complete,:match_path=> '/complete' %>
+  </ul>
+<% end %>

@@ -1,0 +1,24 @@
+  <div class="box box-form group">
+    <%= form_for @address_entry, :url => address_entries_path do |f| %>
+
+      <h2>Shipping Address</h2>
+
+      <label><input type="checkbox" /> Primary Address<span><%= link_to "Remove", "#" %></span></label>
+      <%= f.text_field :name, :placeholder => "Title (e.g. home, work)" %>
+      <%= fields_for :address, @address do |a| %>
+        <%= a.text_field :firstname, :placeholder => "First Name" %>
+        <%= a.text_field :lastname, :placeholder => "Last Name" %>
+        <% if Spree::Config[:company] %>
+          <%= a.text_field :company, :placeholder => "Company" %>
+        <% end %>
+        <%= a.text_field :address1, :placeholder => "Address 1" %>
+        <%= a.text_field :address2, :placeholder => "Address 2" %>
+        <%= a.text_field :city, :placeholder => "City" %>
+        <%= a.collection_select :state_id, @country.states, :id, :name, :include_blank => "Select State" %>
+        <%= a.text_field :zipcode, :placeholder => "Zip Code" %>
+        <%= a.text_field :phone, :placeholder => "Phone" %>
+      <% end %>
+      <!-- <label><input type="checkbox" /> Save this address information</label> -->
+      <div class="actions right"><%= link_to "Cancel", :back %><%= f.submit "Save", :class => "button button-primary" %></div>
+    <% end %>
+  </div>

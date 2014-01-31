@@ -1,0 +1,10 @@
+header #search-view .icon-link, 
+header #social-links .social-icon { line-height: 0; text-indent: 0px; }
+.grid .item .photo .item-bg { height: 130px; }
+input { width: 95%; }
+select { margin-top: 4px; }
+input.line_item_quantity { width: 50px; }
+form.edit_order p.field.checkbox input, 
+form.edit_order p.field.radios input,
+form.edit_order p.payment-method input { width: 20px; }
+form.edit_order .button-primary { width: 180px; }

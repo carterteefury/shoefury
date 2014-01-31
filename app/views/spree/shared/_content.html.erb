@@ -1,0 +1,49 @@
+<% content ||= @content %>
+<% image_size ||= :medium %>
+<% html ||= false %>
+<% content_counter ||= 0 %>
+
+<% content_for :body_class do %>class="cart content-page"<% end %>
+
+<%= render :partial => "spree/shared/cart_header", :locals =>  { :full => true } %>
+
+<div class="container">
+
+  <% unless content.nil? %>
+    
+    <div class="content group<%= ' alt' if content_counter % 2 == 0 %>" id="<%= dom_id(content) %>">
+      
+      <% if content.has_image? %>
+        <div class="content-left">
+          <%= image_tag content.attachment.url(image_size), :alt => content.title, :class => 'in-content' %>
+        </div>
+      <% end %>
+      
+      <div class="group <%= content.has_image? ? "content-right" : "content-main" %>">
+        <% unless content.hide_title? %>
+          <h1 class="title"><%= content.title %></h1>
+        <% end %>
+        
+        <%= content.rendered_body %>
+        
+        <% if content.has_full_link? %>
+          <%= link_to content.link_text || 'read more', content.link %>
+        <% end %>
+      </div>    
+          
+    </div>
+
+  <% end %>
+
+  <% unless @pages.blank? %>
+    <footer>
+      <ul>
+        <% @pages.each do |page| %>
+          <% next if page.root? || !page.visible? %>
+          <%= content_tag(:li, link_to(page.nav_title, page.path), :class => page.matches?(request.path) ? "active" : nil) %>
+        <% end %>
+      </ul>
+    </footer>
+  <% end %>
+
+</div>

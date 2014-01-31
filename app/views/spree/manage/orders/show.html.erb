@@ -1,0 +1,15 @@
+<a href="javascript:window.print()">Print This Page</a>
+<fieldset id="order_summary" data-hook>
+  <legend><%= t(:order) + " #" + @order.number %></legend>
+  <h1><%= accurate_title %></h1>
+
+<div id="order" data-hook>
+  <%= render :partial => 'details', :locals => { :order => @order } %>
+
+  <br class="clear" />
+
+  <p data-hook="links">
+    <%= link_to t(:back_to_orders), spree.manage_orders_path, :class => "button" %>
+  </p>
+</div>
+</fieldset>

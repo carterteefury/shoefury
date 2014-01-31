@@ -1,0 +1,10 @@
+<% if @hearts and @hearts.detect{|h| h.product_id ==product.id} %>
+  <div class="item-bar"><%= link_to "You Love", "javascript:void(0)", :class => "love-link loved" %><span><%= product.hearts_count%></span></div>
+<% else %>
+  <% if user_signed_in? %>
+    <div class="item-bar"><%= link_to "Love It", "javascript:void(0)", :class => "love-link", data: {product_id: product.id}  %><span><%= product.hearts_count %></span></div>
+  <% else %>
+    <div class="item-bar"><%= link_to "Love It", "javascript:void(0)", :class => "love-link logged-out", data: {product_id: product.id}  %><span><%= product.hearts_count %></span></div>
+  <% end %>
+
+<% end %>

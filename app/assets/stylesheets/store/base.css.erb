@@ -1,0 +1,431 @@
+/* Application base styles
+---------------------------------------- */
+/* This is the base design that applies to the entire site and all screen widths.
+and is especially optimized for smallest mobile from 240px width. */
+
+a, a:visited { color: #00B9BD; }
+
+h2 { font-size: 16px; font-family: "gothambook"; }
+
+.no-border, .no-border:hover { border: none; }
+.float-right { float: right; }
+.float-left { float: left; }
+.right { text-align: right; }
+.center { text-align: center; }
+.reverse { color: #FFF; }
+.reverse-soft { color: #9E9E9E; }
+.full-indent { margin-left: 20px; margin-right: 20px;}
+
+.hide { display: none; }
+.nobottommargin { margin-bottom: 0px; }
+
+.boxsizing { box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+
+.container { width: 190px; margin: 0 auto; }
+.full-container { width: 100%; }
+
+ul.jcarousel-skin-tango { list-style-type: none; display: none; }
+
+.box { padding: 20px; margin: 0; border-radius: 5px; max-width: 270px; margin-left: auto; margin-right: auto; }
+.box-form { background-color: #F2F2F2; margin-top: 20px;}
+form p { margin: 15px 0 0 0; }
+form p.first { margin-top: 0; }
+form p .button.space-left { margin-left: 10px; }
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], select { border-radius: 5px; padding: 6px 8px; margin-bottom: 10px; border: 1px solid #CCC; width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+form .button-facebook { width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+
+select { margin: 0; font-size: 100%; vertical-align: middle; display: inline-block; height: 28px; padding: 4px; margin-bottom: 9px; font-size: 13px; line-height: 18px; color: #555555; background-color: #ffffff; border: 1px solid #cccccc; border-radius: 3px; }
+
+label.label-checkbox { display: block; padding-left: 15px; text-indent: -15px; }
+label.label-checkbox input { width: 13px; height: 13px; padding: 0; margin: 0; vertical-align: bottom; position: relative; top: -3px; *overflow: hidden; }
+
+.love-link { text-align: left; color: #F63700; display: inline-block; text-indent: -9999px; width: 16px; height: 14px; background: transparent url(<%= asset_path 'store/heart-sm.png' %>) no-repeat center center; }
+.love-link:hover { border: none; }
+.love-link.loved { text-indent: 0px; width: auto; background-image: none; }
+.love-link + span { margin-left: 4px; }
+
+/* GRID VIEW */
+.item { position: relative; background-color: #FFF; margin: 5px; float: left; width: 180px; height: 150px; }
+.item .photo { position: relative; border: none; display: block; line-height: 0; }
+.item .photo:hover { cursor: pointer; }
+.item .photo > img { margin: 0; width: 180px; height: 150px; }
+
+.item .photo .hover { display: none; position: absolute; top: 0px; left: 0px; width: 100%; }
+.item .photo .hover:hover { cursor: pointer; }
+
+.item .photo .item-bg { z-index: 1; height: 127px; width: 100%; background-color: #F1F1F1; opacity: .75; }
+.item .photo .item-bar-bg { z-index: 2; width: 100%; height: 23px; line-height: 23px; position: absolute; left: 0px; bottom: 0px; background-color: #F1F1F1; opacity: .75; }
+.item .photo .item-bar { z-index: 3; width: 100%; height: 23px; line-height: 23px; position: absolute; bottom: 0px; right: 5px; text-align: right; }
+.item .photo .item-bar .love-link { height: 23px; }
+.item .photo .item-desc { z-index: 4; position: absolute; top: 0px; left: 0px; margin: 10px; }
+.item .item-copy { display: none; margin: 0; }
+.item p { margin: 0; line-height: 1em; }
+.item .item-desc p.brand, .item .item-desc p.name, .item .item-desc p.price { font-family: "gothambook"; }
+.item .item-desc p.name { font-size: 24px; line-height: 1.1em; max-height: 80px; overflow: hidden; }
+.item .item-desc p.description { display: none; line-height: 1.4em; margin-top: 5px; font-size: 12px; color: #666; }
+
+/* LIST VIEW */
+.list .item { float: none; background-color: #F1F1F1; width: auto; height: auto; padding: 7px; margin-bottom: 10px; border-radius: 3px; }
+.list .item .photo { float: left; margin: 0 15px 5px 0; border: 1px solid #CCC; width: 164px; height: 136px; }
+.list .item .photo > img { width: 164px; height: 136px; }
+.list .item .item-copy { display: block; max-width: 1200px; }
+
+#product_loader { height: 80px;  }
+#product_loader .spinner { height: 80px; background: transparent url(<%= asset_path 'store/loader.gif' %>) center center no-repeat; }
+body, input, select,button, h3, h4, h6 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: normal; font-size: 14px; color: #333; }
+body { background-color: #2C3233; background-repeat: repeat; }
+
+
+header { margin-bottom: 20px; }
+.logo.shoe { float: left; text-indent: -9999px; margin: 10px 0 0 5px; width: 79px; height: 25px; background: transparent url(<%= asset_path 'logo-sm.png' %>) no-repeat center center; }
+.cart .logo.shoe { margin-left: 0px; }
+header.center .logo.shoe { float: none; margin: 30px auto 0 auto; }
+header a:hover { border: none; }
+
+.signin header h1 { float: none; width: auto; }
+.signin .box-form { position: relative; }
+.signin .box-form .close-x { position: absolute; top: 0; right: 0; display: block; width: 40px; height: 40px; text-indent: -9999px; background: transparent url(<%= asset_path 'store/close-x.png' %>) no-repeat center center; }
+
+
+#social-links { display: none; float: right; margin: 10px 10px 0 0;}
+#social-links .social-icon, .dropdown-menu .social-icon { display: inline-block; text-indent: -9999px; height: 25px; width: 42px; background-position: center center; background-repeat: no-repeat; }
+
+.twitter { background-image: url(<%= asset_path 'store/twitter-blue.png' %>); }
+.twitter:hover { background-image: url(<%= asset_path 'store/twitter-white.png' %>); }
+.facebook { background-image: url(<%= asset_path 'store/facebook-blue.png' %>); }
+.facebook:hover { background-image: url(<%= asset_path 'store/facebook-white.png' %>); }
+.google-plus { background-image: url(<%= asset_path 'store/google-plus-blue.png' %>); }
+.google-plus:hover { background-image: url(<%= asset_path 'store/google-plus-white.png' %>); }
+.pinterest { background-image: url(<%= asset_path 'store/pinterest-blue.png' %>); }
+.pinterest:hover { background-image: url(<%= asset_path 'store/pinterest-white.png' %>); }
+
+header #auth { margin: 10px 5px 0 0; height: auto; line-height: 25px; }
+header #auth, header #auth a { color: #B3B3B3; }
+header #auth a:hover { color: #FFF; }
+header #auth a.cart-count-link { padding-left: 7px; }
+header #auth span.cart-count { position: relative; top: -1px; color: #FFF; font-size: 10px; background-color: #00B9BD; padding: 2px 5px; border-radius: 10px; }
+
+header #search-view { margin: 5px 0 10px 0; height: 24px; }
+header #search-view a { color: #00B9BD; font-weight: bold; line-height: 24px; }
+header #search-view a:hover { color: #FFF; }
+
+.icon-link { display: inline-block; text-indent: -9999px; background-color: transparent; background-repeat: no-repeat; background-position: center center; }
+
+header #search-view #share-menu { display: inline; }
+header #search-view #view { float: right; margin: 0 5px 0 0; }
+header #search-view #list-view-link { margin-left: 5px; height: 24px; width: 25px; background-image: url(<%= asset_path 'store/list-icon-grey.png' %>); }
+header #search-view #list-view-link:hover { background-image: url(<%= asset_path 'store/list-icon-white.png' %>); }
+header #search-view #grid-view-link { margin-left: 5px; height: 24px; width: 25px; background-image: url(<%= asset_path 'store/grid-icon-grey.png' %>); }
+header #search-view #grid-view-link:hover { background-image: url(<%= asset_path 'store/grid-icon-white.png' %>); }
+
+#search { float: left; margin: 0 0 0 5px; }
+#search-link { height: 24px; width: 16px; background-image: url(<%= asset_path 'store/magglass-white.png' %>); }
+#search-field { padding: 3px 0px 3px 25px; width: 150px; height: 24px; line-height: 16px; border-radius: 20px; border: 1px solid #333333; background: #F2F2F2 url(<%= asset_path 'store/magglass-black.png' %>) 3% 50% no-repeat; display: none; box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: border-box;}
+
+/* Buttons */
+.button, input[type="button"], button { border: none; display: inline-block; text-align: center; height: 30px; line-height: 30px; min-width: 40px; padding: 0px 15px; border-radius: 3px; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+.button:hover { border: none; }
+
+.button-primary, .button-primary:visited { color: #FB6900; background: #69c2da;}
+.button-primary:hover, .button-primary:active { color: #ED9F55; background: #5facbe;}
+
+.button-secondary, .button-secondary:visited { color: #00B9BD; background: #464646;}
+.button-secondary:hover, .button-secondary:active { color: #78DEDF; background: #656565;}
+
+.button-tertiary, .button-tertiary:visited { color: #2ECC71; background: #f0f0f0;}
+.button-tertiary:hover, .button-tertiary:active { background: #e1e1e1;}
+
+.button-action, .button-action:visited { color: #00B9BD; font-weight: bold; background: #9cd247;}
+.button-action:hover, .button-action:active { background: #8ab440;}
+
+.button-facebook img { float: left; margin: 4px 15px 0 0; padding: 0; }
+.button.button-facebook { padding: 0px 30px; line-height: 30px; height: 30px; }
+.button-facebook, .button-facebook:visited { color: #F2F2F2; background: #3a5897;}
+.button-facebook:hover, .button-facebook:active { background: #1e3f77;}
+
+
+/* Bootstrap Dropdown */
+.dropdown { position: relative; }
+.dropdown-toggle { *margin-bottom: -3px; }
+.dropdown-toggle:active, .open .dropdown-toggle { outline: 0; }
+.dropdown-menu { position: absolute; top: 100%; left: 0; z-index: 1000; float: left; display: none; min-width: 30px; padding: 4px 0; margin: 0; list-style: none; background-color: #565B5C; border-color: #ccc; border-color: rgba(0, 0, 0, 0.2); border-style: solid; border-width: 1px; -webkit-border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; border-radius: 0 0 5px 5px; -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); -webkit-background-clip: padding-box; -moz-background-clip: padding; background-clip: padding-box; *border-right-width: 2px; *border-bottom-width: 2px; }
+.dropdown-menu.pull-right { right: 0; left: auto; }
+.dropdown-menu .divider { height: 1px; margin: 8px 1px; overflow: hidden; background-color: #2C3233; *width: 100%; *margin: -5px 0 5px; }
+.dropdown-menu a { display: block; padding: 3px 15px; clear: both; font-weight: normal; line-height: 18px; color: #333333; white-space: nowrap; }
+.dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover { color: #ffffff; text-decoration: none; background-color: #2C3233; }
+.dropdown.open { *z-index: 1000; }
+.dropdown.open .dropdown-toggle { color: #ffffff; background: #ccc; background: rgba(0, 0, 0, 0.3); }
+.dropdown.open .dropdown-menu { display: block; }
+
+/* Error Explanation */
+.errorExplanation { color: #FFF; }
+.errorExplanation p { margin: 5px 0 0 0; }
+.errorExplanation ul { margin: 0 0 5px 0; }
+
+/* Brand Products Carousel */
+.brand-products { float: right; display: none; width: 394px; height: 200px;}
+.brand-products > p { font-family: "gothambook"; margin: 15px 0 0 15px; }
+.brand-products .jcarousel-skin-tango { width: 394px; height: 152px; }
+.brand-products .jcarousel-skin-tango .jcarousel-container-horizontal { width: 394px; padding: 0px; }
+.brand-products .jcarousel-skin-tango .jcarousel-clip { overflow: hidden; }
+.brand-products .jcarousel-skin-tango .jcarousel-clip-horizontal { width:  394px; height: 152px; }
+.brand-products .jcarousel-skin-tango .jcarousel-item { width: 182px; height: 152px; }
+.brand-products .jcarousel-skin-tango .jcarousel-item-horizontal { margin-left: 15px; }
+.brand-products .jcarousel-skin-tango .jcarousel-next-horizontal { position: absolute; top: 162px; right: -10px; width: 32px; height: 32px; cursor: pointer; background: transparent url(<%= asset_path 'store/arrow-right-black.png' %>) no-repeat 0 0; }
+.brand-products .jcarousel-skin-tango .jcarousel-prev-horizontal { position: absolute; top: 162px; right: 22px; width: 32px; height: 32px; cursor: pointer; background: transparent url(<%= asset_path 'store/arrow-left-black.png' %>) no-repeat 0 0; }
+.brand-products .jcarousel-skin-tango .jcarousel-prev-horizontal.jcarousel-prev-disabled-horizontal, .brand-products .jcarousel-skin-tango .jcarousel-next-horizontal.jcarousel-next-disabled-horizontal { background-image: none; }
+
+/* Brand Page */
+.brand-page { padding-bottom: 50px; }
+.brand-page #brand-bg { padding-bottom: 20px; background: #f2f2f2; }
+.brand-page header { position: relative; background-color: #1A1A1A; border-radius: 0px 0px 5px 5px; padding: 0; margin-bottom: 7px; }
+.brand-page header #brand-logo { visibility: hidden; float: left; position: relative; padding: 0; margin: 10px; width: 150px; height: 40px; }
+.brand-page header #brand-logo img { position: absolute; bottom: 0; left: 0; margin: 0; max-width: 150px; max-height: 40px; }
+.brand-page header #auth { float: right; margin: 10px 10px 20px 0; line-height: 1em; padding: 0; height: auto; }
+.brand-page header #home-link { position: absolute; top: 30px; right: 10px; }
+.brand-page header #home-link a { font-size: 12px; font-weight: bold; color: #FFF; }
+
+.brand-page header #love-link-box { display: none; position: absolute; white-space: nowrap; line-height: 1em; padding: 0; margin: 0; }
+.brand-page header #love-link-box span { color: #F2F2F2; }
+.brand-page header #love-link-box .love-link.loved { color: #C1272D; }
+
+.brand-page .max-width-center { max-width: 360px; margin: 0 auto; }
+
+.brand-page #social-links { display: none; }
+.brand-page #free-shipping { display: none; height: 30px; margin: 30px 0 20px 0; font-family: "gothambook"; color: #FFF; text-transform: uppercase; font-size: 12px; background: #ef5923;}
+.brand-page #free-shipping p { line-height: 30px; text-align: center; }
+
+#product-title { background-color: #1A1A1A; border-radius: 5px; margin-bottom: 7px; }
+#product-title h2, #product-title h3 { line-height: 1em; font-family: "gothambook"; color: #FFF; margin: 10px; }
+#product-title h3 { font-size: 14px; margin-bottom: 0; }
+#product-title h3 a:hover { border: none; }
+#product-title h2 { font-size: 24px; margin-top: 0; }
+
+#product-copy h3 { display: none; }
+#product-copy p { margin-bottom: 11px; }
+
+#photos { position: relative; width: 190px; height: 190px; margin-bottom: 7px; }
+#photos img { margin: 0; }
+#photos .item-bar-bg { z-index: 2; width: 100%; height: 23px; line-height: 23px; position: absolute; left: 0px; bottom: 0px; background-color: #F1F1F1; opacity: .75; }
+#photos .item-bar { z-index: 3; width: 100%; height: 23px; line-height: 23px; position: absolute; bottom: 0px; right: 5px; text-align: right; }
+#photos .item-bar .love-link { height: 23px; }
+
+/* Product Carousel */
+#photos .jcarousel-skin-tango .jcarousel-container-horizontal { width: 190px; height: 190px; }
+#photos .jcarousel-skin-tango .jcarousel-clip { overflow: hidden; }
+#photos .jcarousel-skin-tango .jcarousel-clip-horizontal { width: 190px; }
+#photos .jcarousel-skin-tango .jcarousel-list { height: 190px; }
+#photos .jcarousel-skin-tango .jcarousel-item { width: 190px; height: 190px; }
+#photos .jcarousel-skin-tango .jcarousel-next-horizontal { position: absolute; top: 75px; right: 0px; width: 40px; height: 40px; cursor: pointer; background: transparent url(<%= asset_path 'store/arrow-right-black.png' %>) no-repeat center center; }
+#photos .jcarousel-skin-tango .jcarousel-prev-horizontal { position: absolute; top: 75px; left: 0px; width: 40px; height: 40px; cursor: pointer; background: transparent url(<%= asset_path 'store/arrow-left-black.png' %>) no-repeat center center; }
+#photos .jcarousel-skin-tango .jcarousel-prev-horizontal.jcarousel-prev-disabled-horizontal, #photos .jcarousel-skin-tango .jcarousel-next-horizontal.jcarousel-next-disabled-horizontal { background-image: none; }
+
+
+#info { background-color: #1A1A1A; color: #9E9E9E; border-radius: 5px; padding: 10px; margin-bottom: 7px; }
+#info > p:first-child { font-family: "gothambook"; color: #F2F2F2; margin-bottom: 10px; }
+#info > p:first-child span { color: #808080; }
+#info .tab-buttons .button { width: 79px; padding: 0; margin: 0 6px 10px 0; }
+#info .tab-buttons .button.even { margin-right: 0; }
+
+.brand-page form select, .brand-page form input, .brand-page form .button { width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+.brand-page form .button-primary { margin-top: 5px; margin-bottom: 15px; }
+.brand-page input.number { width: 60px; }
+.brand-page .button-secondary { margin-left: 5px; margin-bottom: 10px; }
+.brand-page .button-secondary:first-child { margin-left: 0px; }
+.brand-page #more-brand-products-nav { background: #1A1A1A; border-radius: 3px; margin-bottom: 7px; }
+.brand-page #more-brand-products-nav p { font-family: "gothambook"; height: 35px; line-height: 35px; color: #F2F2F2; margin: 0 0 0 10px; }
+
+/* Product Carousel */
+#more-brand-products .item { width: 190px; height: 320px; background: transparent; }
+#more-brand-products .jcarousel-skin-tango .jcarousel-container-horizontal { width: 190px; }
+#more-brand-products .jcarousel-skin-tango .jcarousel-clip { overflow: hidden; }
+#more-brand-products .jcarousel-skin-tango .jcarousel-clip-horizontal { width: 190px; height: 320px; }
+#more-brand-products .jcarousel-skin-tango .jcarousel-item { width: 180px; height: 150px; }
+#more-brand-products .jcarousel-skin-tango .jcarousel-item-horizontal { margin: 5px; }
+#more-brand-products .jcarousel-skin-tango .jcarousel-next-horizontal { position: absolute; top: -45px; right: 5px; width: 30px; height: 40px; cursor: pointer; background: transparent url(<%= asset_path 'store/arrow-right-white.png' %>) no-repeat center center; }
+#more-brand-products .jcarousel-skin-tango .jcarousel-prev-horizontal { position: absolute; top: -45px; right: 35px; width: 30px; height: 40px; cursor: pointer; background: transparent url(<%= asset_path 'store/arrow-left-white.png' %>) no-repeat center center; }
+#more-brand-products .jcarousel-skin-tango .jcarousel-prev-horizontal.jcarousel-prev-disabled-horizontal, #more-brand-products .jcarousel-skin-tango .jcarousel-next-horizontal.jcarousel-next-disabled-horizontal { background-image: none; }
+
+.brand-page #marketplace { background: #000; }
+.brand-page #marketplace #title { margin: 10px 0; }
+.brand-page #marketplace #title p { color: #666; font-family: "gothambook"; font-size: 16px; height: 25px; line-height: 25px; margin: 10px 0 0 5px; }
+.brand-page #marketplace #search { float: right; margin-top: 10px; margin-right: 5px; }
+
+/* Cart */
+.cart, .cart-form { padding-bottom: 50px; }
+.cart header > p { padding-right: 5px; }
+.cart h2 { color: #FFF; margin: 0; padding: 12px 0; font-size: 16px; font-family: "gothambook"; border-top: 1px solid #999; border-bottom: 1px solid #999; }
+.cart .empty-cart p { line-height: 1em; margin: 25px 0px; }
+.cart .empty-cart p:first-child { font-size: 18px; color: #FFF; }
+.cart .cart-item { position: relative; margin: 0; padding: 20px 0; border-top: 1px solid #999; }
+.cart form div:first-child + .cart-item { border-top: none; }
+.cart .cart-item h3, .cart .cart-item h4, .cart .cart-item p.price { color: #FFF; font-family: "gothambook"; line-height: 1em; margin: 0 0 3px 0; padding: 0; }
+.cart .cart-item h3 { font-size: 18px; margin: 0 0 20px 0; }
+.cart .cart-item p.price { margin: 0; line-height: 1.4em; }
+.cart .cart-item .tax-shipping { display: none; }
+.cart .cart-item .image-container { text-align: center; margin-bottom: 20px; }
+.cart .cart-item .image-container img { margin-bottom: 0px; }
+.cart .cart-item .cart-item-price { font-weight: bold; color: #FFF; margin: 0; }
+.cart .cart-item ul.cart-item-details { margin: 0px 0 15px 0; padding: 0 0 0 10px; list-style-type: none; color: #9E9E9E; }
+.cart .cart-item ul.cart-item-details li { text-indent: -10px; margin: 0; line-height: 1.3em;  }
+.cart .cart-item .button-secondary { margin-left: 10px; }
+.cart .cart-item .actions { margin: 15px 0 0 0; }
+.cart .cart-item input[type="number"] { width: 60px; }
+.cart .totals { background-color: #F2F2F2; border-radius: 5px; padding: 20px; margin-bottom: 20px; }
+.cart .totals p { margin-bottom: 0; text-align: right; }
+.cart .totals p.subtotal, .cart .totals p.total { font-weight: bold; }
+.cart .totals div.checkout { margin-top: 10px; text-align: right; }
+.cart .empty-cart-form { display: inline; }
+.cart .cart-items form > .actions { text-align: right; margin-bottom: 10px; }
+.cart .cart-items form > .actions .button { margin: 0 0 5px 5px; width: 120px; }
+.cart .return-policy span { color: #FFF; }
+
+.checkout .progress ol { margin: 15px 0 0 0; color: #999; }
+.checkout .progress ol li.current-first, .checkout .progress ol li.current { color: #FFF; }
+
+.checkout .box-form { max-width: 100%; }
+.checkout form fieldset { margin: 0; padding: 0; }
+.checkout form fieldset legend { font-family: "gothambook"; font-size: 16px; margin: 0 0 0 -2px; padding-bottom: 5px; }
+.checkout form p.field { margin-top: 0px; }
+.checkout form select { width: 140px; }
+.checkout .hidden { display: none; }
+.checkout p.checkbox { margin-bottom: 10px; }
+
+.checkout #checkout-summary { color: #FFF; }
+.checkout #checkout-summary h3 { font-family: "gothambook"; margin-top: 20px; color: #FFF; }
+
+.checkout #payment-methods li { list-style-type: none; }
+.checkout #payment-methods input[type="text"] { width: 95%; }
+.checkout #payment-methods #card_code { width: 50px; }
+.checkout #payment-methods .card-expiration select { width: 80px; }
+.checkout #card_number { max-width: 250px; }
+.checkout .payment-info img { vertical-align: text-top; margin: 0; }
+
+.checkout h6 { font-weight: bold; margin: 0; padding-top: 20px; }
+.checkout hr { margin-top: 20px; }
+
+#order_summary legend { font-weight: bold; font-size: 18px; font-family: "gothambook"; }
+
+.cart #order-items h4, .cart #order-items h3 { font-family: "gothambook"; margin: 0; }
+.cart #order-items h3 { font-size: 18px; font-weight: bold; }
+
+.cart #order-items ul { list-style-type: none; }
+.cart #order-items ul li { max-width: 190px; text-align: right; }
+.cart #order-items ul li span { float: left; font-weight: bold; width: 80px; display: inline-block; white-space: nowrap; }
+
+.cart #order-items .item-details { margin-top: 10px; }
+
+.cart-form .box-form h2 { padding-top: 20px; padding-bottom: 10px; margin-bottom: 20px; border: none; border-bottom: 1px solid #808080; color: #333; }
+.cart-form .box-form h2:first-child { padding-top: 0; }
+.cart-form .box-form img { margin-bottom: 0; }
+.cart-form .box-form h3 { font-size: 14px; font-weight: bold; line-height: 1.4em; }
+.cart-form .box-form input.number { width: 60px; }
+.cart-form form select, .brand-page form .button { width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+.cart-form form .actions { margin-top: 20px; }
+.cart-form form .button-primary { margin-left: 10px; }
+.cart-form form label { display: block; margin-bottom: 10px; }
+.cart-form form label span { float: right; }
+
+.thank-you .pre-summary p { color: #FFF; margin: 7px 0 7px 0; }
+.thank-you .box-form h2 { color: #333; border-top: none; padding-top: 0; }
+.thank-you .items-totals { position: relative; }
+.thank-you .cart-item h3, .thank-you .cart-item h4 { color: #333;  }
+.thank-you .cart-item h3 { margin-bottom: 3px; }
+.thank-you .cart-item-details li { color: #333; }
+.thank-you .cart-item p.price { color: #333; font-weight: bold; text-align: right; margin-bottom: 0; }
+.thank-you .totals { padding: 0; }
+
+.thank-you .shipping-and-billing p { color: #9E9E9E; margin: 0; }
+.thank-you .shipping-and-billing p.title { color: #FFF; font-weight: bold; margin-top: 15px; }
+
+.box-page { background: transparent; margin: 0; padding: 0; }
+.box-page .box { margin: 0; }
+
+/* Account */
+.account { color: #FFF; }
+.account h2 { margin: 0 0 20px 0; padding: 12px 0; font-size: 16px; font-family: "gothambook"; border-top: 1px solid #999; border-bottom: 1px solid #999; }
+.account h2.orders { margin-bottom: 0; }
+.account h2.orders + p { margin-top: 20px; }
+.account .order { border-top: 1px solid #999; margin: 0; padding: 10px 0; list-style-type: none; }
+.account h2 + .order { border-top: none; }
+.account .order li label { display: inline-block; width: 120px; }
+
+.ui-widget-overlay { background-color: #000; opacity: .75; position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; top: 20px; right: 0px; }
+.ui-icon-closethick { display: block; width: 40px; height: 40px; text-indent: -9999px; background: transparent url(<%= asset_path 'store/close-x.png' %>) no-repeat center center; }
+
+footer { border-top: 1px solid #999; margin-top: 20px; padding-top: 10px; }
+footer ul { list-style-type: none; }
+footer ul li { display: inline; margin-right: 8px; white-space: nowrap; }
+
+.content { color: #FFF; }
+.content p { margin: 0 0 1.625em; line-height: 1em; }
+.content h1, .content-page .content h2, .content-page .content h3 { color: #FFF; font-family: "gothambook"; padding: 0; }
+.content h2 { border: none; }
+.content h1 { padding: 12px 0; border-top: 1px solid #999; border-bottom: 1px solid #999; font-size: 16px; /* 68px */ line-height: 1.1471em; margin: 0 0 20px 0; }
+.content h2 { font-size: 30px; line-height: 1.2381em; margin: 0 0 0.619em; }
+.content h3 { font-size: 20px; line-height: 1em; margin: 0 0 1em; }
+.content a:hover { text-decoration: underline; }
+
+.flash, #errorExplanation { padding: 10px; border-radius: 4px; margin-bottom: 10px; border: 1px solid;}
+.flash.errors, #errorExplanation { background: #F2DEDE; color: #B94A48; border-color: #EED3D7; }
+#errorExplanation h2, #errorExplanation p { display: none; }
+#errorExplanation ul { margin-left: 10px; }
+#errorExplanation li { text-indent: -12px; }
+
+
+
+
+
+
+/* Generated by Font Squirrel (http://www.fontsquirrel.com) on January 22, 2014 */
+
+
+
+@font-face {
+    font-family: 'gothamblack';
+    src: url('../../fonts/gotham-black-webfont.eot');
+    src: url('../../fonts/gotham-black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/gotham-black-webfont.woff') format('woff'),
+         url('../../fonts/gotham-black-webfont.ttf') format('truetype'),
+         url('../../fonts/gotham-black-webfont.svg#gothamblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'gothambold';
+    src: url('../../fonts/gotham-bold-webfont.eot');
+    src: url('../../fonts/gotham-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/gotham-bold-webfont.woff') format('woff'),
+         url('../../fonts/gotham-bold-webfont.ttf') format('truetype'),
+         url('../../fonts/gotham-bold-webfont.svg#gothambold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'gothambook';
+    src: url('../../fonts/gotham-book-webfont.eot');
+    src: url('../../fonts/gotham-book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/gotham-book-webfont.woff') format('woff'),
+         url('../../fonts/gotham-book-webfont.ttf') format('truetype'),
+         url('../../fonts/gotham-book-webfont.svg#gothambook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*{
+	font-family: "gothambook" !important;
+}
+
+

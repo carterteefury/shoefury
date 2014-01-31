@@ -1,0 +1,23 @@
+<% content_for :body_class, "class='signin'" %>
+<header class="container group center">
+  <a href="<%= root_path %>"><h1 class="logo karnl">Karnl</h1></a>
+</header>
+<div id="forgot-password" class="container">
+  <div class="box box-form">
+    <%= link_to "Close", root_path, :class => "close-x" %>
+
+    <h2><%= t(:forgot_password) %></h2>
+
+    <p><%= t(:instructions_to_reset_password) %></p>
+
+    <%= form_for Spree::User.new, :as => :user, :url => spree.user_password_path do |f| %>
+      <p>
+        <%= f.label :email, t(:email) %><br />
+        <%= f.email_field :email %>
+      </p>
+      <p>
+        <%= f.submit t(:reset_password), :class => 'button button-primary' %>
+      </p>
+    <% end %>
+  </div>
+</div>

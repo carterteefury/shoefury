@@ -1,0 +1,2 @@
+To get path to the current Spree source in use
+bundle show spree

@@ -1,0 +1,20 @@
+<% content_for :body_class, "class='signin'" %>
+
+<header class="container group center">
+  <a href="<%= root_path %>"><h1 class="logo karnl">Karnl</h1></a>
+</header>
+<div class="container">
+
+  <div class="box box-form">
+    <h2>Edit Settings</h2>
+    <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
+    <%= form_for @user, :url => spree.user_path(@user), :method => :put do |f| %>
+      <%= f.email_field :email, :placeholder => "Email" %>
+      <%= f.password_field :password, :placeholder => "Password" %>
+      <%= f.password_field :password_confirmation, :placeholder => "Enter password again" %>
+
+      <p class="right"><%= f.submit "Update", :class => 'button button-primary space-left' %></p>
+    <% end %>
+  </div>
+
+</div>

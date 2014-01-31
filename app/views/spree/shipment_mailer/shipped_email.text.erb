@@ -1,0 +1,30 @@
+Shipping Confirmation
+Order # <%= @shipment.order.number %>
+
+Hey <%= @shipment.order.shipping_address.firstname %>,
+    Thank you for shopping with us. We thought you'd like to know that <%= @shipment.line_items.first.variant.product.brand.name %> shipped your item<%= @shipment.order.shipment_state == "shipped" ? ", and that this completes your order." : "." %> Your order is on its way, and can no longer be changed. If you need to return an item from this shipment or manage other orders, please visit your My Account on Karnl.com.
+
+
+    Your order was sent to:
+    <%= @shipment.order.shipping_address.firstname %> <%= @shipment.order.shipping_address.lastname %>
+    <%= @shipment.order.shipping_address.address1 %> 
+    <%= @shipment.order.shipping_address.address2 if @shipment.order.shipping_address.address2 %>
+    <%= @shipment.order.shipping_address.city %> <%= @shipment.order.shipping_address.state.name %>, <%= @shipment.order.shipping_address.zipcode %>
+
+    Your package is being shipped by <%= @shipment.order.shipping_method.name %> <%= "and the tracking number is #{@shipment.tracking}. Depending on the ship speed you chose, it may take 24 hours for your tracking number to return any information." if @shipment.tracking %> 
+
+    ============================================================
+    Shipment Summary
+    ============================================================
+  <% @shipment.line_items.each do |item| %>
+      <%= item.variant.sku %> <%= item.variant.product.name %> <%= variant_options(item.variant) %> (<%= item.quantity %>)
+  <% end %>
+    ============================================================
+
+Returns are easy. Visit our Online Return Center. 
+If you need further assistance with your order, please contact support@karnl.com
+We hope to see you again soon!
+Karnl.com
+Unless otherwise noted, items are sold by Karnl.com LLC and taxed if shipped to Kansas, North Dakota, New York, Kentucky or Washington. If your order contains one or more items from an Karnl.com partner it may be subject to state and local sales tax, depending on the state to which the item is being shipped. Learn more about tax and seller information.
+This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.
+

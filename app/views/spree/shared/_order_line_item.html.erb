@@ -1,0 +1,32 @@
+<div class="line-item group">
+  <div class="image-container">
+    <% if item.variant.images.length == 0 %>
+      <%= link_to small_image(item.variant.product), item.variant.product %>
+    <% else %>
+      <%= link_to image_tag(item.variant.images.first.attachment.url(:small)), item.variant.product %>
+    <% end %>
+  </div>
+  <div class="right-column">
+    <h4><%= item.variant.product.brand ? item.variant.product.brand.name : "" %></h4>
+    <h3><%= item.variant.product.name %></h3>
+    <%= truncate(item.variant.product.description, :length => 100, :omission => "...") %>
+    <br>
+    <%= "(" + variant_options(item.variant) + ")" unless item.variant .option_values.empty? %>
+    <% if item.variant.product.brand %>
+      <p>Return Policy: <%= item.variant.product.brand.return_days %> days</p>
+      <% if item.variant.product.brand.free_shipping %>
+        <p> Free shipping from this brand </p>
+      <% else %>
+        <% begin %>
+          <p>Shipping: <%=number_to_currency item.order.shipping_method.calculator.compute(item) if item.order.shipping_method.calculator %></p>
+        <% rescue NoMethodError %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <ul class="item-details">
+      <li><span>Price: </span><%= number_to_currency item.price %></li>
+      <li><span>Quantity: </span><%= item.quantity %></li>
+      <li><span>Total: </span><%= number_to_currency (item.price * item.quantity) %></li>
+    </ul>
+  </div>
+</div>

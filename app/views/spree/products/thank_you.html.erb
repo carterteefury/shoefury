@@ -1,0 +1,81 @@
+<% @page_class = "cart thank-you" %>
+
+<%= render :partial => "cart_header", :locals =>  { :full => true, :not_thank_you => false } %>
+
+<div class="container">
+  <h2>Thank You Jen!</h2>
+  <div class="pre-summary">
+    <p><strong>Your Receipt Number: 123465</strong></p>
+    <p>We sent a copy of your receipt to your email inbox.</p>
+    <p><strong>Share karnl.com with your friends! Earn a $50 credit!</strong></p>
+    <div class="dropdown" id="share-menu">
+      <%= link_to "Share+", "#share-menu", :id => "share-menu-link", "data-toggle" => "dropdown", :class => "dropdown-toggle" %> 
+      <ul class="dropdown-menu pull-left">
+        <li><%= link_to "Share on Twitter", "javascript:void(0)", :class => "social-icon twitter" %></li>
+        <li><%= link_to "Share on Facebook", "javascript:void(0)", :class => "social-icon facebook" %></li>
+        <li><%= link_to "Share on Google+", "javascript:void(0)", :class => "social-icon google-plus" %></li>
+        <li><%= link_to "Share on Pinterest", "javascript:void(0)", :class => "social-icon pinterest" %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box box-form group">
+
+    <h2>Order Summary</h2>
+  
+    <div class="items-totals">
+      <div class="cart-items">
+        <div class="group"><!-- TIMA: this groups the rows, add it every two items -->
+          <div class="cart-item group">
+            <h4>Analog Womens</h4>
+            <h3>QSF Bluffs Blazer</h3>
+            <ul class="cart-item-details">
+              <li>Quantity: 1</li>
+              <li>Color: Black</li>
+              <li>Size: Small</li>
+              <li>Returnable: Yes</li>
+              <li>Est. Arrival Date: April 10, 2012</li>
+            </ul>
+            <p class="price">Price: $24.99 ea. Total: $24.99</p>
+          </div>
+
+          <div class="cart-item group">
+            <h4>Ridiculous</h4>
+            <h3>Old School Gym</h3>
+            <ul class="cart-item-details">
+              <li>Quantity: 1</li>
+              <li>Color: White</li>
+              <li>Size: 9</li>
+              <li>Returnable: Yes</li>
+              <li>Est. Arrival Date: April 10, 2012</li>
+            </ul>
+            <p class="price">Price: $24.99 ea. Total: $24.99</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="totals">
+        <p class="subtotal">Subtotal: $109.36</p>
+        <p>Sales Tax: 7% x $109.36 = $2.58</p>
+        <p>Shipping: $4.98 Flat Rate</p>
+        <p class="total">Total: $169.69<p>
+      </div>
+    </div>
+  </div>
+
+  <div class="shipping-and-billing group">
+    <div class="column">
+      <p class="title">Shipping to:</p>
+      <p>Jen Bruni</p>
+      <p>1234 Main Street</p>
+      <p>Salt Lake City, UT 84123</p>
+    </div>
+    <div class="column">
+      <p class="title">Billing:</p>
+      <p>Visa</p>
+      <p>**** **** **** 1234</p>
+    </div>
+  </div>
+
+
+</div>

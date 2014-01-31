@@ -1,0 +1,38 @@
+<% content_for :body_class do %>class="cart account"<% end %>
+
+<%= render :partial => "spree/shared/cart_header", :locals =>  { :full => true } %>
+
+<div class="container">
+
+  <h2><%= accurate_title %></h2>
+  <p><strong>Email</strong>: <%= @user.email %> (<%= link_to t(:edit), spree.edit_account_path %>)</p>
+  <p><%= link_to t(:logout), spree.destroy_user_session_path %></p>
+
+  <h2 class="orders">My Orders</h2>
+  <% if @orders.present? %>
+    <% @orders.each do |order| %>
+    <ul class="order">
+      <li><label>Order No:</label><%= link_to order.number, order_url(order) %></li>
+      <li><label>Order Date:</label><%= l order.created_at.to_date %></li>
+      <li><label>Status:</label><%= t(order.state).titleize %></li>
+      <li><label>Payment State:</label><%= t("payment_states.#{order.payment_state}") if order.payment_state %></li>
+      <li><label>Shipment State:</label><%= t("shipment_states.#{order.shipment_state}") if order.shipment_state %></li>
+      <li><label>Total:</label><%= number_to_currency order.total %></li>
+    </ul>
+    <% end %>
+  <% else %>
+    <p><%= t(:you_have_no_orders_yet) %></p>
+  <% end %>
+
+  <% unless @pages.blank? %>
+    <footer>
+      <ul>
+        <% @pages.each do |page| %>
+          <% next if page.root? || !page.visible? %>
+          <%= content_tag(:li, link_to(page.nav_title, page.path), :class => page.matches?(request.path) ? "active" : nil) %>
+        <% end %>
+      </ul>
+    </footer>
+  <% end %>
+
+</div>
